@@ -1,9 +1,14 @@
+##
+# Translates command line arguments and executes associated actions
 class Runner
-
+	##
+	# Initialize by setting a reference to PersonRepository
 	def initialize(repository)
 		@repository = repository
 	end
 
+	##
+	# Execute command taken straight from the command line
 	def exec(cmd)
 		splitted = cmd.split(" ")
 
@@ -14,11 +19,8 @@ class Runner
 		end
 	end
 
-	def missing_method(name)
-		puts name + " is not implemented yet"
-	end
-
-	
+	##
+	# Hello World!
 	def hello(param = nil)
 		if param == nil
 			puts "Who are you saying hello to?"
@@ -29,11 +31,15 @@ class Runner
 		puts "Hello #{names}"
 	end
 
+	##
+	# List all people
 	def ls
 		@repository.print_all
 	end
 
 
+	##
+	# Show profile of people who's names are in the given array
 	def profile(names)
 		if names == nil or names.length == 0
 			puts "You need to pass some names"
@@ -50,6 +56,8 @@ class Runner
 		end
 	end
 
+	##
+	# Introduce two people to each other
 	def introduce(names)
 		if names == nil or names.length != 2
 			puts "Please give me 2 names"
@@ -71,6 +79,8 @@ class Runner
 		profile1.meet profile2
 	end
 
+	##
+	# Remove a given person from the list of all people
 	def remove(names)
 		if names == nil or names.length == 0
 			puts "You need to pass some names"
@@ -82,6 +92,8 @@ class Runner
 		end
 	end
 
+	##
+	# Create a new profile
 	def create(names)
 		if names == nil or names.length == 0
 			put "You need to pass some names"
@@ -94,7 +106,15 @@ class Runner
 		end
 	end
 
+	##
+	# Print list of available commands
 	def help
 		puts "help -- see this message"
+		puts "hello name -- Say hello to {name}!"
+		puts "create name1 [name2] [nameN] -- create profiles with given names"
+		puts "profile name1 [name2] [nameN] -- show profiles of people given"
+		puts "ls -- list all people known to exist"
+		puts "remove name -- remove a person given"
+		puts "introduce name1 name2 -- introduce {name1} to {name2}"
 	end
 end
