@@ -6,4 +6,8 @@ class Person
 	def introduce
 		puts "Hi, I am #{@name}"
 	end
+
+	def to_s
+		return " I am #{@name}"
+	end
 end

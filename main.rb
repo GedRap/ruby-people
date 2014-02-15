@@ -1,16 +1,24 @@
 autoload(:Person, "./Person.rb")
+autoload(:Runner, "./Runner.rb")
 
-all_people = []
 
-name = gets.chomp
+runner = Runner.new
 
-until name.empty? do
-	puts ">>> Got #{name}"
+puts "### PeopleCom v1.0"
+puts "### Type help for assistance"
 
-	name = gets.chomp
-	new_person = Person.new(name)
+print ">>> "
+STDOUT.flush
 
-	all_people << new_person
+cmd = gets.chomp
+
+until cmd == "quit" or cmd == "exit" do
+	runner.exec(cmd)
+
+	print ">>> "
+	STDOUT.flush
+
+	cmd = gets.chomp
 end
 
-puts "Total " + all_people.length.to_s
+exit
