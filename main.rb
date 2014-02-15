@@ -1,4 +1,16 @@
 autoload(:Person, "./Person.rb")
 
-p = Person.new("Ged")
-p.introduce
+all_people = []
+
+name = gets.chomp
+
+until name.empty? do
+	puts ">>> Got #{name}"
+
+	name = gets.chomp
+	new_person = Person.new(name)
+
+	all_people << new_person
+end
+
+puts "Total " + all_people.length.to_s
