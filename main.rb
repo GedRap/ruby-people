@@ -1,8 +1,10 @@
 autoload(:Person, "./Person.rb")
 autoload(:Runner, "./Runner.rb")
+autoload(:PersonRepository, "./PersonRepository.rb")
 
+repository = PersonRepository.new
 
-runner = Runner.new
+runner = Runner.new repository
 
 puts "### PeopleCom v1.0"
 puts "### Type help for assistance"

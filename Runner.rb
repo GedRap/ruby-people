@@ -1,4 +1,9 @@
 class Runner
+
+	def initialize(repository)
+		@repository = repository
+	end
+
 	def exec(cmd)
 		splitted = cmd.split(" ")
 
@@ -24,6 +29,10 @@ class Runner
 		puts "Hello #{names}"
 	end
 
+	def ls
+		@repository.print_all
+	end
+
 	def create(names)
 		if names == nil or names.length == 0
 			put "You need to pass some names"
@@ -32,7 +41,7 @@ class Runner
 
 		names.each do |name|
 			new_person = Person.new(name)
-			puts new_person.to_s
+			@repository.add new_person
 		end
 	end
 
